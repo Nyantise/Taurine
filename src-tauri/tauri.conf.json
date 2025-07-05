@@ -1,0 +1,96 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "neobox",
+  "version": "0.1.0",
+  "identifier": "io.niuu.neobox",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Neobox",
+        "visible": false
+      },
+      {
+        "label": "tray",
+        "title": "Neobox Tray",
+        "url": "/tray",
+        "height": 320,
+        "width": 240,
+        "skipTaskbar": true,
+        "transparent": true,
+        "visible": false,
+        "fullscreen": false,
+        "closable": false,
+        "maximizable": false,
+        "maximized": false,
+        "resizable": false,
+        "minimizable": false,
+        "hiddenTitle": true,
+        "titleBarStyle": "Overlay",
+        "shadow": false,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "windowEffects": null
+      },
+      {
+        "label": "keyselect",
+        "title": "Neobox Key Selection",
+        "url": "/keyselect",
+        "x": 0,
+        "y": 1,
+        "skipTaskbar": true,
+        "transparent": true,
+        "visible": false,
+        "fullscreen": false,
+        "closable": false,
+        "focus": true,
+        "maximizable": false,
+        "maximized": false,
+        "resizable": false,
+        "minimizable": false,
+        "hiddenTitle": true,
+        "titleBarStyle": "Overlay",
+        "shadow": false,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "windowEffects": null
+      },
+      {
+        "label": "app",
+        "title": "Neobox App",
+        "url": "/app",
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "decorations": false,
+        "transparent": true,
+        "shadow": true,
+        "closable": true,
+        "focus": false,
+        "maximizable": true,
+        "maximized": false,
+        "resizable": true,
+        "minimizable": true,
+        "windowEffects": null
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

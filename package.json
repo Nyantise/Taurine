@@ -1,0 +1,42 @@
+{
+  "name": "neobox",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@hello-pangea/dnd": "^18.0.1",
+    "@legendapp/state": "3.0.0-beta.31",
+    "@mantine/core": "^7.17.4",
+    "@mantine/hooks": "^7.17.4",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-fs": "~2",
+    "@tauri-apps/plugin-opener": "^2",
+    "@uidotdev/usehooks": "^2.4.1",
+    "framer-motion": "^12.6.5",
+    "i18next": "^25.0.0",
+    "i18next-browser-languagedetector": "^8.0.4",
+    "modern-normalize": "^3.0.1",
+    "motion": "^12.18.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.4.1",
+    "vite-tsconfig-paths": "^5.1.4",
+    "wouter": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.3"
+  }
+}
