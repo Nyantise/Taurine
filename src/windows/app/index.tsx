@@ -16,6 +16,7 @@ function IndexPage() {
         <Link to="/home">Home</Link>
     </BaseLayout>
 }
+
 function HomePage() {
     return <BaseLayout>
         <h1>{Translate("App.Home.message")}</h1>

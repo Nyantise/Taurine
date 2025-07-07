@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "neobox",
+  "productName": "taurine",
   "version": "0.1.0",
-  "identifier": "io.niuu.neobox",
+  "identifier": "taurine",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,12 +12,12 @@
   "app": {
     "windows": [
       {
-        "title": "Neobox",
+        "title": "Taurine",
         "visible": false
       },
       {
         "label": "tray",
-        "title": "Neobox Tray",
+        "title": "Taurine Tray",
         "url": "/tray",
         "height": 320,
         "width": 240,
@@ -39,7 +39,7 @@
       },
       {
         "label": "keyselect",
-        "title": "Neobox Key Selection",
+        "title": "Taurine Key Selection",
         "url": "/keyselect",
         "x": 0,
         "y": 1,
@@ -62,7 +62,7 @@
       },
       {
         "label": "app",
-        "title": "Neobox App",
+        "title": "Taurine App",
         "url": "/app",
         "titleBarStyle": "Overlay",
         "hiddenTitle": true,

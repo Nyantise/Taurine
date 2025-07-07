@@ -1,17 +1,18 @@
 import { use$ } from "@legendapp/state/react"
-import { windowController } from "@stores/windowstate.store"
 import { motion } from "motion/react"
 import { ReactNode, useEffect } from "react"
 import { useIsFirstRender } from "@uidotdev/usehooks";
 import { TitleBar } from "./TitleBar";
+import WindowController from "@stores/windowstate.store";
+import { ContextMenuApp } from "@components/Windows/ContextMenu";
 
 export function WindowComponent({ children }: { children?: ReactNode | undefined }) {
-    const val = use$(windowController.state.transition);
+    const val = use$(WindowController.state.transition);
     const isFirst = useIsFirstRender()
     useEffect(() => {
         if (isFirst) {
             setTimeout(() => {
-                windowController.state.transition.set("expand");
+                WindowController.state.transition.set("expand");
             }, 250);
         }
     })
@@ -30,7 +31,7 @@ export function WindowComponent({ children }: { children?: ReactNode | undefined
             },
             hide: {
                 padding: 28,
-                transition: { duration: 0.2}
+                transition: { duration: 0.2 }
             }
         }}
 
@@ -55,10 +56,12 @@ export function WindowComponent({ children }: { children?: ReactNode | undefined
                 border: "1.5px solid #00000021"
             }}
         >
-            <TitleBar />
-            <div style={{height: "calc(100% - 36px)", width: "100%"}}>
-                {children}
-            </div>
+            <ContextMenuApp>
+                <TitleBar />
+                <div style={{ height: "calc(100% - 36px)", width: "100%" }}>
+                    {children}
+                </div>
+            </ContextMenuApp>
         </motion.div >
     </motion.div>
 }

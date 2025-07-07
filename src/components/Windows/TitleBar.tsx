@@ -1,16 +1,57 @@
 import { IconWindowClose } from '@components/Icons/IconWindowClose'
 import { IconWindowExpand } from '@components/Icons/IconWindowExpand'
 import { IconWindowMinimize } from '@components/Icons/IconWindowMinimize'
-import styled from '@emotion/styled'
-import { windowController } from '@stores/windowstate.store'
+import styled from '@emotion/styled';
+import WindowController from '@stores/windowstate.store'
+import {
+    Menubar,
+    MenubarContent,
+    MenubarItem,
+    MenubarMenu,
+    MenubarSeparator,
+    MenubarShortcut,
+    MenubarTrigger,
+} from "@shadcn/components/ui/menubar"
 
 export function TitleBar() {
     return <TittleBarStyle>
+        <Menubar className="bg-transparent border-none">
+            <MenubarMenu>
+                <MenubarTrigger className='rounded-s-xs bg-transparent border-none focus-visible:ring-offset-0 focus-visible:ring-0 cpad hover:bg-gray-200'>
+                    File
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>
+                        New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarItem>New Window</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>Share</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger className='rounded-s-xs bg-transparent border-none focus-visible:ring-offset-0 focus-visible:ring-0 cpad hover:bg-gray-200'>
+                    Test
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>
+                        New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarItem>New Window</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>Share</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+        </Menubar>
         <div className="options"></div>
         <div data-tauri-drag-region className="blank"></div>
         <div className="controls">
-            <div className='minimize' onClick={() => windowController.minimize()}><IconWindowMinimize /></div>
-            <div className='maximize' onClick={() => windowController.toggleMaximize()}><IconWindowExpand /></div>
+            <div className='minimize' onClick={() => WindowController.minimize()}><IconWindowMinimize /></div>
+            <div className='maximize' onClick={() => WindowController.toggleMaximize()}><IconWindowExpand /></div>
             <div className='close' onClick={() => { }}><IconWindowClose /></div>
         </div>
     </TittleBarStyle>
@@ -61,5 +102,10 @@ const TittleBarStyle = styled.div`
             margin-left: 2px;
         }
         .close{}
+    }
+
+    .cpad{
+        padding: 3px;
+        padding-inline: 6px;
     }
 `
