@@ -68,7 +68,7 @@
         "hiddenTitle": true,
         "decorations": false,
         "transparent": true,
-        "shadow": true,
+        "shadow": false,
         "closable": true,
         "focus": false,
         "maximizable": true,
