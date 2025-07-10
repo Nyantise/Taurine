@@ -16,6 +16,9 @@
     "opener:default",
     "core:event:allow-emit",
     "core:event:allow-listen",
+    "global-shortcut:allow-is-registered",
+    "global-shortcut:allow-register",
+    "global-shortcut:allow-unregister",
     "fs:default"
   ]
 }
