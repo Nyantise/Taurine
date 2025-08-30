@@ -12,10 +12,8 @@ import {
 } from "@shadcn/components/ui/context-menu";
 
 export function BaseCtxMenu() {
-    function preventDefault(e) {
-        e.preventDefault()
-    }
-    return <ContextMenuContent className="w-52" onContextMenu={preventDefault}>
+
+    return <ContextMenuContent className="w-52">
         <ContextMenuSub>
             <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
             <ContextMenuSubContent className="w-44">

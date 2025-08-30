@@ -16,6 +16,7 @@ declare module '@tanstack/react-router' {
 
 changeTranslation("en")
 WindowController.watchWindow()
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {

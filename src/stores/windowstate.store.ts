@@ -1,5 +1,6 @@
 import { observable } from "@legendapp/state";
 import { currentMonitor, getCurrentWindow } from "@tauri-apps/api/window";
+import { simulateClickForceFocus } from "@utils/clickSimulate";
 import { sleep } from "@utils/Sleep";
 
 
@@ -25,10 +26,13 @@ function close() {
 }
 
 async function unminimize() {
-    await sleep(100)
+    document.body.style.pointerEvents = "none"
     state.transition.set("show");
     await sleep(400)
     state.transition.set("expand")
+    await sleep(250)
+    document.body.style.pointerEvents = "auto"
+    simulateClickForceFocus()
 }
 
 
@@ -45,7 +49,7 @@ async function watchWindow() {
 
         //MINIMIZE DETECTION
         if (await window.isMinimized()) {
-            return 
+            return
         }
 
         // @ts-ignore

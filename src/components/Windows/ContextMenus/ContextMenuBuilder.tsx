@@ -11,7 +11,6 @@ export function ContextMenuApp({ children }: { children?: ReactNode | undefined 
   const ctx = use$(menuContext);
   function handleClick(evt: React.MouseEvent<HTMLButtonElement>) {
     if (!canOpen) {
-      menuContext.set("none")
       evt.preventDefault()
       canOpen = true
     }
