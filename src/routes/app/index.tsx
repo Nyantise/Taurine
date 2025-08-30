@@ -1,31 +1,19 @@
-import { Link, Route } from "wouter";
-import { BaseRouter } from "@components/BaseRouter";
-import { changeTranslation, Translate } from "@config/i18n";
-import styled from '@emotion/styled'
+import {createFileRoute, Link} from '@tanstack/react-router'
+import {changeTranslation, Translate} from "@config/i18n";
+import styled from "@emotion/styled";
 
-export function AppWindow() {
-    return <BaseRouter index={IndexPage}>
-        <Route path="/home" component={HomePage} />
-    </BaseRouter>
-}
-
+export const Route = createFileRoute('/app/')({
+    component: IndexPage,
+})
 function IndexPage() {
     return <BaseLayout>
         <h1>{Translate("App.WelcomeMessage")}</h1>
-        <Showcase />
-        <Link to="/home">Home</Link>
+        <Showcase/>
+        <Link to="/app/home">Home</Link>
     </BaseLayout>
 }
 
-function HomePage() {
-    return <BaseLayout>
-        <h1>{Translate("App.Home.message")}</h1>
-        <Showcase />
-        <a onClick={() => history.back()}>{Translate("App.Home.returnBtn")}</a>
-    </BaseLayout>
-}
-
-function Showcase() {
+export function Showcase() {
     return <>
         <h2>{window.location.pathname}</h2>
         <div className="translation-list">
@@ -35,7 +23,7 @@ function Showcase() {
     </>
 }
 
-const BaseLayout = styled.div`
+export const BaseLayout = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -44,11 +32,11 @@ const BaseLayout = styled.div`
     align-items: center;
     gap: 32px;
 
-    .translation-list{
+    .translation-list {
         display: flex;
         gap: 8px;
 
-        button{
+        button {
             cursor: pointer;
             border: 1px solid black;
             padding-bottom: 2px;
@@ -58,7 +46,8 @@ const BaseLayout = styled.div`
             border-radius: 4px;
         }
     }
-    a{
+
+    a {
         cursor: pointer;
         text-decoration: none;
         color: black;

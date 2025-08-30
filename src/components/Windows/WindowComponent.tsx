@@ -4,7 +4,7 @@ import { ReactNode, useEffect } from "react"
 import { useIsFirstRender } from "@uidotdev/usehooks";
 import { TitleBar } from "./TitleBar";
 import WindowController from "@stores/windowstate.store";
-import { ContextMenuApp } from "@components/Windows/ContextMenu";
+import { ContextMenuApp } from "@components/Windows/ContextMenus/ContextMenuBuilder";
 
 export function WindowComponent({ children }: { children?: ReactNode | undefined }) {
     const val = use$(WindowController.state.transition);

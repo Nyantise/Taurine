@@ -14,7 +14,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-
+    "strictNullChecks": true,
     /* Linting */
     "strict": false,
     "noUnusedLocals": true,
