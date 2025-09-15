@@ -13,13 +13,30 @@ import {
     MenubarTrigger,
 } from "@shadcn/components/ui/menubar"
 import { Contexter } from './ContextMenus/Contexter';
+import { themeController } from '@stores/theme.store';
+import { use$ } from '@legendapp/state/react';
 
 export function TitleBar() {
+    const theme = use$(themeController.state)
+
+
+
     return <Contexter context='titlebar'>
-        <TittleBarStyle>
-            <Menubar className="bg-transparent border-none">
+        <div style={{
+            display: "flex",
+            height: theme.window.titlebarHeight,
+            backgroundColor: theme.window.titlebarColor,
+            width: "100%",
+            fontSize: "14px",
+            paddingLeft: "12px",
+            borderBottom: theme.window.border,
+            borderTopLeftRadius: "12px",
+            borderTopRightRadius: "12px"
+
+        }}>
+            <Menubar className="border-none">
                 <MenubarMenu>
-                    <MenubarTrigger className='rounded-s-xs bg-transparent border-none focus-visible:ring-offset-0 focus-visible:ring-0 cpad hover:bg-gray-200'>
+                    <MenubarTrigger>
                         File
                     </MenubarTrigger>
                     <MenubarContent>
@@ -34,7 +51,7 @@ export function TitleBar() {
                     </MenubarContent>
                 </MenubarMenu>
                 <MenubarMenu>
-                    <MenubarTrigger className='rounded-s-xs bg-transparent border-none focus-visible:ring-offset-0 focus-visible:ring-0 cpad hover:bg-gray-200'>
+                    <MenubarTrigger>
                         Test
                     </MenubarTrigger>
                     <MenubarContent>
@@ -44,27 +61,22 @@ export function TitleBar() {
                     </MenubarContent>
                 </MenubarMenu>
             </Menubar>
-            <div className="options"></div>
-            <div data-tauri-drag-region className="blank"></div>
-            <div className="controls">
-                <div className='minimize' onClick={() => WindowController.minimize()}><IconWindowMinimize /></div>
-                <div className='maximize' onClick={() => WindowController.toggleMaximize()}><IconWindowExpand /></div>
-                <div className='close' onClick={() => WindowController.close()}><IconWindowClose /></div>
-            </div>
-        </TittleBarStyle>
-    </Contexter>
+            <TittleBarStyle>
+                <div className="options"></div>
+                <div data-tauri-drag-region className="blank"></div>
+                <div className="controls">
+                    <div className='minimize' onClick={() => WindowController.minimize()}><IconWindowMinimize /></div>
+                    <div className='maximize' onClick={() => WindowController.toggleMaximize()}><IconWindowExpand /></div>
+                    <div className='close' onClick={() => WindowController.close()}><IconWindowClose /></div>
+                </div>
+            </TittleBarStyle>
+        </div>
+    </Contexter >
 }
-
 const TittleBarStyle = styled.div`
-    font-size: 14px;
-    padding-left: 12px;
-    height: 36px;   
-    width: 100%;
-    border-bottom: 1px solid #00000021;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
     display: flex;
-
+    width: 100%;
+    height: 100%;
     .blank{
         width: 100%;
         height: 100%;
@@ -79,8 +91,6 @@ const TittleBarStyle = styled.div`
         gap: 8px;
         justify-content: center;
         align-items: center;
-        color: #0000008b;
-
 
         div{
             display: flex;
@@ -102,10 +112,5 @@ const TittleBarStyle = styled.div`
             margin-left: 2px;
         }
         .close{}
-    }
-
-    .cpad{
-        padding: 3px;
-        padding-inline: 6px;
     }
 `

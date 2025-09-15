@@ -10,8 +10,8 @@ It comes with some pre-configured things, like
 - Multi window store sync, store persistance.
 - Shadcn (for faster prototyping) and for: Dropdown menu, Context menu and Menubar.
 - Custom Tray
-
-! actualy tested only on Windows, encountered some problems setting tray for linux !
+    
+! (ACTUALY) focused only on Windows, since i've encountered some problems setting tray for linux !
 
 ! work in progress, don't recommended to use for production yet !
 

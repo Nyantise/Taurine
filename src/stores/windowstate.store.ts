@@ -54,14 +54,16 @@ async function watchWindow() {
 
         // @ts-ignore
         if (last2[0].height < monitor?.size.height / 15 && last2.length > 1) {
-            return unminimize()
+            await unminimize()
+            return
         }
 
         //MAXIMIZE DETECTION
         try {
             // @ts-ignore
             if (last2[1].height == monitor?.size.height || last2[1].width == monitor?.size.width) {
-                return unminimize()
+                await unminimize()
+                return
             }
         } catch (error) {
             return unminimize()
@@ -69,7 +71,8 @@ async function watchWindow() {
         //UNMAXIMIZE DETECTION
         // @ts-ignore
         if (last2[0].height == monitor?.size.height || last2[0].width == monitor?.size.width) {
-            return unminimize()
+            await unminimize()
+            return 
         }
     })
 }

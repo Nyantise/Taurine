@@ -3,21 +3,18 @@ import { motion } from "motion/react"
 import WindowController from '@stores/windowstate.store';
 import { createFileRoute, Outlet } from '@tanstack/react-router'
 import { useIsFirstRender } from '@uidotdev/usehooks';
-import { useEffect } from 'react';
 import { ContextMenuApp } from '@components/Windows/ContextMenus/ContextMenuBuilder';
 import { TitleBar } from '@components/Windows/TitleBar';
 
 export const Route = createFileRoute('/app')({
     component: () => {
         const val = use$(WindowController.state.transition);
-        const isFirst = useIsFirstRender()
-        useEffect(() => {
-            if (isFirst) {
-                setTimeout(() => {
-                    WindowController.state.transition.set("expand");
-                }, 250);
-            }
-        })
+        if (useIsFirstRender()) {
+            setTimeout(() => {
+                WindowController.state.transition.set("expand");
+            }, 250);
+        }
+
         return <motion.div
             style={{ overflowY: "hidden", width: "100vw", height: "100vh" }}
             animate={val}
@@ -52,14 +49,16 @@ export const Route = createFileRoute('/app')({
                 style={{
                     width: "100%",
                     height: "100%",
-                    backgroundColor: "white",
-                    borderRadius: "12px",
-                    border: "1.5px solid #00000021"
+                    backgroundColor: "var(--background)",
+                    borderRadius: "var(--window-border-radius)",
+                    border: "var(--window-border)",
+                    color: "var(--primary)",
+                    transition: "all 0.5s ease"
                 }}
             >
                 <ContextMenuApp>
                     <TitleBar />
-                    <div style={{ height: "calc(100% - 36px)", width: "100%" }}>
+                    <div style={{ height: "calc(100% - var(--window-titlebar-height))", width: "100%" }}>
                         <Outlet />
                     </div>
                 </ContextMenuApp>

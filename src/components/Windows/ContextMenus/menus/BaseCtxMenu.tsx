@@ -27,9 +27,7 @@ export function BaseCtxMenu() {
             </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
-        <ContextMenuCheckboxItem checked>
-            Show Bookmarks
-        </ContextMenuCheckboxItem>
+        <ContextMenuCheckboxItem checked>Show Bookmarks</ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
         <ContextMenuSeparator />
         <ContextMenuRadioGroup value="colm">

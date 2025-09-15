@@ -44,12 +44,12 @@ export const BaseLayout = styled.div`
             padding-inline: 6px;
             background-color: transparent;
             border-radius: 4px;
+            color: inherit;
         }
     }
 
     a {
         cursor: pointer;
         text-decoration: none;
-        color: black;
     }
 `

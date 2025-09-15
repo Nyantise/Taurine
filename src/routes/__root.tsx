@@ -7,10 +7,9 @@ listen("reloadWindow", () => {
 })
 
 export const Route = createRootRoute({
-    component: () =>
-        <LoadGlobalStyle>
-            <Outlet />
-        </LoadGlobalStyle>
+    component: () => <LoadGlobalStyle>
+        <Outlet />
+    </LoadGlobalStyle>
 })
 
 const LoadGlobalStyle = styled.div`
@@ -19,8 +18,6 @@ const LoadGlobalStyle = styled.div`
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
-
-    color: #0f0f0f;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -32,8 +29,6 @@ const LoadGlobalStyle = styled.div`
 * {
     user-select: none;
     -webkit-user-drag: none;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 `
