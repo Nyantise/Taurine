@@ -11,6 +11,7 @@ let watching = false;
 
 const state = observable({
     transition: "show" as "show" | "hide" | "expand",
+    maximized: false
 });
 
 function toggleMaximize() {
@@ -62,6 +63,7 @@ async function watchWindow() {
         try {
             // @ts-ignore
             if (last2[1].height == monitor?.size.height || last2[1].width == monitor?.size.width) {
+                state.maximized.set(true)
                 await unminimize()
                 return
             }
@@ -71,6 +73,7 @@ async function watchWindow() {
         //UNMAXIMIZE DETECTION
         // @ts-ignore
         if (last2[0].height == monitor?.size.height || last2[0].width == monitor?.size.width) {
+            state.maximized.set(false)
             await unminimize()
             return 
         }

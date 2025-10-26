@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {BaseLayout, Showcase} from "./index.tsx";
+import {Showcase} from "./index.tsx";
 import {Translate} from "@config/i18n";
 import { themeController } from '@stores/theme.store.ts';
 
@@ -8,9 +8,9 @@ export const Route = createFileRoute('/app/home')({
 })
 
 function HomePage() {
-    return <BaseLayout>
+    return <div className='flex flex-col w-full h-full justify-center items-center gap-[32px]'>
         <h1>{Translate("App.Home.message")}</h1>
         <Showcase/>
         <a onClick={() => themeController.changeDark()}>{Translate("App.Home.returnBtn")}</a>
-    </BaseLayout>
+    </div>
 }

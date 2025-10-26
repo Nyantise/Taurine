@@ -5,7 +5,6 @@ import { changeTranslation } from "@config/i18n";
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import WindowController from "@stores/windowstate.store.ts";
-import { themeController } from "@stores/theme.store";
 
 const router = createRouter({ routeTree })
 // Register the router instance for type safety
@@ -17,7 +16,6 @@ declare module '@tanstack/react-router' {
 
 changeTranslation("en");
 WindowController.watchWindow();
-themeController.CssInject();
 
 document.addEventListener('contextmenu', event => event.preventDefault());
 

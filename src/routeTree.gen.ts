@@ -14,6 +14,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as TrayIndexRouteImport } from './routes/tray/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppHomeRouteImport } from './routes/app/home'
+import { Route as AppConfigRouteImport } from './routes/app/config'
 
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/app',
@@ -40,16 +41,23 @@ const AppHomeRoute = AppHomeRouteImport.update({
   path: '/home',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppConfigRoute = AppConfigRouteImport.update({
+  id: '/config',
+  path: '/config',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
+  '/app/config': typeof AppConfigRoute
   '/app/home': typeof AppHomeRoute
   '/app/': typeof AppIndexRoute
   '/tray': typeof TrayIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/config': typeof AppConfigRoute
   '/app/home': typeof AppHomeRoute
   '/app': typeof AppIndexRoute
   '/tray': typeof TrayIndexRoute
@@ -58,16 +66,24 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
+  '/app/config': typeof AppConfigRoute
   '/app/home': typeof AppHomeRoute
   '/app/': typeof AppIndexRoute
   '/tray/': typeof TrayIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/app/home' | '/app/' | '/tray'
+  fullPaths: '/' | '/app' | '/app/config' | '/app/home' | '/app/' | '/tray'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app/home' | '/app' | '/tray'
-  id: '__root__' | '/' | '/app' | '/app/home' | '/app/' | '/tray/'
+  to: '/' | '/app/config' | '/app/home' | '/app' | '/tray'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/config'
+    | '/app/home'
+    | '/app/'
+    | '/tray/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -113,15 +129,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHomeRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/config': {
+      id: '/app/config'
+      path: '/config'
+      fullPath: '/app/config'
+      preLoaderRoute: typeof AppConfigRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
   }
 }
 
 interface AppRouteRouteChildren {
+  AppConfigRoute: typeof AppConfigRoute
   AppHomeRoute: typeof AppHomeRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppConfigRoute: AppConfigRoute,
   AppHomeRoute: AppHomeRoute,
   AppIndexRoute: AppIndexRoute,
 }

@@ -1,5 +1,5 @@
 import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
-import { TitleBarStyle } from "@tauri-apps/api/window";
+import { TitleBarStyle, WindowOptions } from "@tauri-apps/api/window";
 
 export const baseWindow = {
     hiddenTitle: true,
@@ -8,7 +8,7 @@ export const baseWindow = {
     shadow: false,
     decorations: false,
     windowEffects: undefined
-}
+} as WindowOptions
 
 export function createAppWindow() {
     return new WebviewWindow('app', {
@@ -18,6 +18,8 @@ export function createAppWindow() {
         height: 600,
         center: true,
         focus: true,
+        alwaysOnTop: true,
+
         ...baseWindow
     });
 }

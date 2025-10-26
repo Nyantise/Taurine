@@ -12,7 +12,7 @@ function Menubar({
     <MenubarPrimitive.Root
       data-slot="menubar" 
       className={cn(
-        "bg-background flex h-9 items-center gap-1 rounded-md border p-1 shadow-xs",
+        "bg-background flex h-9 items-center gap-1 rounded-md p-1 shadow-xs border border-foreground",
         className
       )}
       {...props}
@@ -55,14 +55,14 @@ function MenubarTrigger({
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        `bg-[var(--window-titlebar-color)]
-        text-[var(--window-text-color)]
-        border-none
-        focus:bg-[var(--window-bg-color)]
+        `bg-background
+        text-sm
+        text-primary
+        hover:bg-accent
         focus:text-accent-foreground
-        data-[state=open]:bg-[var(--window-bg-color)]
+        data-[state=open]:bg-accent
         data-[state=open]:text-accent-foreground
-        flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none`,
+        flex items-center rounded-sm px-2 py-1 font-medium outline-hidden select-none`,
         className
       )}
       {...props}
@@ -85,9 +85,9 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          `bg-[var(--window-bg-color)]
-          text-[var(--window-text-color)]
-          border border-[var(--window-text-color)]
+          `bg-background
+          text-primary
+          border border-foreground
           data-[state=open]:animate-in
           data-[state=closed]:fade-out-0
           data-[state=open]:fade-in-0
@@ -121,7 +121,7 @@ function MenubarItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        `focus:bg-[var(--context-menu-hover-accent)]
+        `focus:bg-accent
         focus:text-accent-foreground
         data-[variant=destructive]:text-destructive
         data-[variant=destructive]:focus:bg-destructive/10

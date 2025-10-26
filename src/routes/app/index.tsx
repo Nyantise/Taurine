@@ -1,55 +1,28 @@
-import {createFileRoute, Link} from '@tanstack/react-router'
-import {changeTranslation, Translate} from "@config/i18n";
-import styled from "@emotion/styled";
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { changeTranslation, Translate } from "@config/i18n";
 
 export const Route = createFileRoute('/app/')({
     component: IndexPage,
 })
 function IndexPage() {
-    return <BaseLayout>
+    return <div className='
+    flex flex-col w-full h-full justify-center items-center gap-[32px]
+    '>
         <h1>{Translate("App.WelcomeMessage")}</h1>
-        <Showcase/>
+        <Showcase />
         <Link to="/app/home">Home</Link>
-    </BaseLayout>
+    </div>
 }
 
 export function Showcase() {
     return <>
         <h2>{window.location.pathname}</h2>
-        <div className="translation-list">
+        <div className="flex gap-[8px] 
+        *:cursor-pointer *:border *:border-[1px solid black] *:pb-[2px] *:pt-[4px] *:pl-[6px} *:pr-[6px] *:bg-transparent *:rounded-lg *:text-inherit
+        [&_a]:cursor-pointer
+        ">
             <button onClick={() => changeTranslation("pt")}>{Translate("App.PortugueseBtn")}</button>
             <button onClick={() => changeTranslation("en")}>{Translate("App.EnglishBtn")}</button>
         </div>
     </>
 }
-
-export const BaseLayout = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-
-    .translation-list {
-        display: flex;
-        gap: 8px;
-
-        button {
-            cursor: pointer;
-            border: 1px solid black;
-            padding-bottom: 2px;
-            padding-top: 4px;
-            padding-inline: 6px;
-            background-color: transparent;
-            border-radius: 4px;
-            color: inherit;
-        }
-    }
-
-    a {
-        cursor: pointer;
-        text-decoration: none;
-    }
-`

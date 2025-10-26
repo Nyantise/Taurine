@@ -1,5 +1,4 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router'
-import styled from "@emotion/styled";
 import { listen } from "@tauri-apps/api/event";
 
 listen("reloadWindow", () => {
@@ -7,28 +6,5 @@ listen("reloadWindow", () => {
 })
 
 export const Route = createRootRoute({
-    component: () => <LoadGlobalStyle>
-        <Outlet />
-    </LoadGlobalStyle>
+    component: () => <Outlet />
 })
-
-const LoadGlobalStyle = styled.div`
-:root {
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-}
-
-* {
-    user-select: none;
-    -webkit-user-drag: none;
-    box-sizing: border-box;
-}
-`

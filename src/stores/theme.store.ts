@@ -6,14 +6,11 @@ export const state = observable({
         borderRadius: "12px" as Property.BorderRadius, 
         border: "1.5px solid #00000021" as Property.Border,
         backgroundColor: "white" as Property.BackgroundColor,
-        foregroundColor: "black" as Property.BackgroundColor,
+        foregroundColor: "#BDBDBD" as Property.BackgroundColor,
         titlebarHeight: "36px" as Property.Height,
-        titlebarColor: "white" as Property.BackgroundColor,
+        titlebarColor: "transparent" as Property.BackgroundColor,
         textColor: "black" as Property.Color,
-
-        contextMenu: {
-            hoverAccent: "#0000000a" as Property.Color
-        }
+        accent: "#5c5c5c1a" as Property.Color,
     }
 })
 
@@ -24,9 +21,8 @@ function CssInject() {
     root.style.setProperty("--foreground", windowTheme.foregroundColor);
     root.style.setProperty("--primary", windowTheme.textColor);
     root.style.setProperty("--window-border", windowTheme.border as any);
-    root.style.setProperty("--window-border-radius", windowTheme.borderRadius as any);
     root.style.setProperty("--window-titlebar-height", windowTheme.titlebarHeight as any);
-    root.style.setProperty("--accent", windowTheme.contextMenu.hoverAccent);
+    root.style.setProperty("--accent", windowTheme.accent);
 }
 
 function changeDark() {
@@ -36,12 +32,9 @@ function changeDark() {
         backgroundColor: "#18122B",
         foregroundColor: "#393053",
         titlebarHeight: "32px",
-        titlebarColor: "#393053",
+        titlebarColor: "transparent",
         textColor: "#635985",
-
-        contextMenu: {
-            hoverAccent: "#ffffff1a"
-        }
+        accent: "#ffffff1a",
     })
 
     CssInject()

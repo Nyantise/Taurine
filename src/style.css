@@ -1,12 +1,23 @@
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
-/* @import "tailwindcss/preflight.css" layer(base); */
+@import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
-@import "modern-normalize";
 @import "tw-animate-css";
 
 :root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
 
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --window-titlebar-height: 36px;
+  --window-border: 1.5px solid #00000021;
   --background: oklch(100% 0.00011 271.152);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -31,7 +42,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
+  --radius: 0.4rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -84,6 +95,10 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    transition: background-color 0.25s ease;
+    user-select: none;
+    -webkit-user-drag: none;
+    box-sizing: border-box;
   }
 
   body {

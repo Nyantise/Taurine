@@ -5,9 +5,11 @@ import { createFileRoute, Outlet } from '@tanstack/react-router'
 import { useIsFirstRender } from '@uidotdev/usehooks';
 import { ContextMenuApp } from '@components/Windows/ContextMenus/ContextMenuBuilder';
 import { TitleBar } from '@components/Windows/TitleBar';
+import { themeController } from "@stores/theme.store";
 
 export const Route = createFileRoute('/app')({
     component: () => {
+        themeController.CssInject();
         const val = use$(WindowController.state.transition);
         if (useIsFirstRender()) {
             setTimeout(() => {
@@ -50,10 +52,9 @@ export const Route = createFileRoute('/app')({
                     width: "100%",
                     height: "100%",
                     backgroundColor: "var(--background)",
-                    borderRadius: "var(--window-border-radius)",
+                    borderRadius: "var(--radius)",
                     border: "var(--window-border)",
                     color: "var(--primary)",
-                    transition: "all 0.5s ease"
                 }}
             >
                 <ContextMenuApp>

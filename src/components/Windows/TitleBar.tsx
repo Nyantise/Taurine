@@ -1,7 +1,6 @@
 import { IconWindowClose } from '@components/Icons/IconWindowClose'
 import { IconWindowExpand } from '@components/Icons/IconWindowExpand'
 import { IconWindowMinimize } from '@components/Icons/IconWindowMinimize'
-import styled from '@emotion/styled';
 import WindowController from '@stores/windowstate.store'
 import {
     Menubar,
@@ -13,28 +12,14 @@ import {
     MenubarTrigger,
 } from "@shadcn/components/ui/menubar"
 import { Contexter } from './ContextMenus/Contexter';
-import { themeController } from '@stores/theme.store';
-import { use$ } from '@legendapp/state/react';
 
 export function TitleBar() {
-    const theme = use$(themeController.state)
-
-
-
     return <Contexter context='titlebar'>
-        <div style={{
-            display: "flex",
-            height: theme.window.titlebarHeight,
-            backgroundColor: theme.window.titlebarColor,
-            width: "100%",
-            fontSize: "14px",
-            paddingLeft: "12px",
-            borderBottom: theme.window.border,
-            borderTopLeftRadius: "12px",
-            borderTopRightRadius: "12px"
-
-        }}>
-            <Menubar className="border-none">
+        <div className='flex 
+            h-[var(--window-titlebar-height)]
+            bg-[var(--color-background)]
+            w-full text-sm rounded-tl-lg rounded-tr-lg'>
+            <Menubar className='mt-2 ml-2.5'>
                 <MenubarMenu>
                     <MenubarTrigger>
                         File
@@ -52,7 +37,27 @@ export function TitleBar() {
                 </MenubarMenu>
                 <MenubarMenu>
                     <MenubarTrigger>
-                        Test
+                        Edit
+                    </MenubarTrigger>
+                    <MenubarContent>
+                        <MenubarItem>
+                            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                        </MenubarItem>
+                    </MenubarContent>
+                </MenubarMenu>
+                <MenubarMenu>
+                    <MenubarTrigger>
+                        View
+                    </MenubarTrigger>
+                    <MenubarContent>
+                        <MenubarItem>
+                            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                        </MenubarItem>
+                    </MenubarContent>
+                </MenubarMenu>
+                <MenubarMenu>
+                    <MenubarTrigger>
+                        Profiles
                     </MenubarTrigger>
                     <MenubarContent>
                         <MenubarItem>
@@ -61,56 +66,18 @@ export function TitleBar() {
                     </MenubarContent>
                 </MenubarMenu>
             </Menubar>
-            <TittleBarStyle>
+            <div className='flex w-full h-full'>
                 <div className="options"></div>
-                <div data-tauri-drag-region className="blank"></div>
-                <div className="controls">
+                <div data-tauri-drag-region className="w-full h-full"></div>
+                <div className="pr-[4px] w-auto flex h-full gap-[8px] justify-center items-center
+                *:flex *:justify-center *:items-center
+                [&_svg]:scale-75 [&_svg]:hover:scale-95 [&_svg]:hover:text-[#000000ca] [&_svg]:hover:transition-all
+                ">
                     <div className='minimize' onClick={() => WindowController.minimize()}><IconWindowMinimize /></div>
-                    <div className='maximize' onClick={() => WindowController.toggleMaximize()}><IconWindowExpand /></div>
+                    <div className='ml-[2px]' onClick={() => WindowController.toggleMaximize()}><IconWindowExpand /></div>
                     <div className='close' onClick={() => WindowController.close()}><IconWindowClose /></div>
                 </div>
-            </TittleBarStyle>
+            </div>
         </div>
     </Contexter >
 }
-const TittleBarStyle = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100%;
-    .blank{
-        width: 100%;
-        height: 100%;
-    }
-
-    .controls{
-        padding-right: 4px;
-        width: auto;
-        display: flex;
-        height: 100%;
-        border-top-right-radius: 12px;
-        gap: 8px;
-        justify-content: center;
-        align-items: center;
-
-        div{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            svg{
-                transform: scale(0.8);
-
-                :hover{
-                    transform: scale(0.92);
-                    transition: all 0.2s ease;
-                    color: #000000ca;
-                }
-            }
-        }
-        .minimize{}
-        .maximize{
-            margin-left: 2px;
-        }
-        .close{}
-    }
-`
